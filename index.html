@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频搜索</title>
+    <link rel="icon" href="https://brandlogos.net/wp-content/uploads/2021/11/bilibili-logo.png" type="image/png">
+    <style>
+        body {
+            background-color: #141414;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            width: 50%;
+            text-align: center;
+            position: relative;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        input[type="text"]:focus {
+            box-shadow: 0 0 12px #00a1d6;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        ::placeholder {
+            color: #888;
+        }
+
+        /* For mobile responsiveness */
+        @media (max-width: 768px) {
+            .search-container {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="https://i0.hdslb.com/bfs/archive/c8fd97a40bf79f03e7b76cbc87236f612caef7b2.png" alt="Bilibili logo" width="150" />
+    </div>
+    <div class="search-container">
+        <form action="https://search.bilibili.com/all" method="get" target="_blank">
+            <input type="text" id="search-input" name="keyword" placeholder="在此输入关键词，搜索Bilibili视频" required>
+            <button class="clear-btn" type="button" onclick="clearSearch()">×</button>
+        </form>
+    </div>
+
+    <script>
+        // Auto-focus on the input field when the page loads
+        document.getElementById('search-input').focus();
+
+        // Handle Enter key submission
+        document.getElementById('search-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                event.target.form.submit();
+            }
+        });
+
+        // Clear the input field
+        function clearSearch() {
+            document.getElementById('search-input').value = '';
+        }
+
+    </script>
+</body>
+</html>
